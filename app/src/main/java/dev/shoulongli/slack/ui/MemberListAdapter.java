@@ -1,10 +1,13 @@
 package dev.shoulongli.slack.ui;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +20,15 @@ import dev.shoulongli.slack.model.Member;
  */
 public class MemberListAdapter extends RecyclerView.Adapter<MemberViewHolder> {
     private List<Member> values;
+    private Context context;
 
-    public MemberListAdapter(@NonNull List<Member> values) {
+    public MemberListAdapter(Context context, @NonNull List<Member> values) {
         this.values = values;
+        this.context = context;
     }
 
-    public MemberListAdapter() {
-        this(new ArrayList<Member>());
+    public MemberListAdapter(Context context) {
+        this(context, new ArrayList<Member>());
     }
 
     @Override
@@ -35,7 +40,10 @@ public class MemberListAdapter extends RecyclerView.Adapter<MemberViewHolder> {
 
     @Override
     public void onBindViewHolder(MemberViewHolder holder, int position) {
-        holder.textView.setText("Test " + position);
+        Member member = values.get(position);
+        holder.textView.setText(member.getProfile().getRealNameNormalized());
+        Glide.with(context).load(member.getProfile().getImage48()).into(holder.imageView);
+
     }
 
     @Override

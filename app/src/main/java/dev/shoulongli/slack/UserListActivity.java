@@ -39,7 +39,7 @@ public class UserListActivity extends AppCompatActivity {
                 outRect.bottom = outRect.top = outRect.left = outRect.right = 10;
             }
         });
-        adapter = new MemberListAdapter();
+        adapter = new MemberListAdapter(this);
         recyclerView.setAdapter(adapter);
     }
 
