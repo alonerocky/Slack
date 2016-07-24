@@ -4,7 +4,7 @@ the other show the user profile detail
 3, use retrofit to download the user list json
 4, use http://www.jsonschema2pojo.org/ to generate the models
 5, use gson to parse the json to models
-
+6, use Sqlite db to cache the user list, just cache the whole json string (to make it simple)
 
 3rd party libraries
 (1) Retrofit & Okhttp - Networking
