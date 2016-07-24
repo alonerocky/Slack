@@ -1,5 +1,6 @@
 package dev.shoulongli.slack.ui;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import dev.shoulongli.slack.R;
  */
 public class MemberViewHolder extends RecyclerView.ViewHolder {
 
+    @BindView(R.id.user_item_container) public CardView itemContainer;
     @BindView(R.id.user_image) public ImageView imageView;
     @BindView(R.id.user_name) public TextView textView;
     public MemberViewHolder(View itemView) {

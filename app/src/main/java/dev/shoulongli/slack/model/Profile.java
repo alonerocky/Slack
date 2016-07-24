@@ -15,6 +15,9 @@ public class Profile {
     @SerializedName("last_name")
     @Expose
     private String lastName;
+    @SerializedName("title")
+    @Expose
+    private String title;
     @SerializedName("image_24")
     @Expose
     private String image24;
@@ -77,6 +80,19 @@ public class Profile {
         this.lastName = lastName;
     }
 
+    /**
+     * @return The title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title The title
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
     /**
      * @return The image24
      */
