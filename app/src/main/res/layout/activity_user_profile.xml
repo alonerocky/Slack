@@ -25,12 +25,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/standard_margin"
+            android:textSize="@dimen/text_size"
             tools:text="User name" />
 
         <TextView
             android:id="@+id/user_real_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
             android:layout_margin="@dimen/standard_margin"
             tools:text="User real name" />
 
@@ -38,6 +40,7 @@
             android:id="@+id/user_job"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size"
             android:layout_margin="@dimen/standard_margin"
             tools:text="User job title" />
     </LinearLayout>

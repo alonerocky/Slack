@@ -24,13 +24,14 @@ public class UserListActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerView) public RecyclerView recyclerView;
     public MemberListAdapter adapter;
+    private DatabaseHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
         ButterKnife.bind(this);
-
+        db = new DatabaseHandler(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
@@ -46,7 +47,15 @@ public class UserListActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        loadFromDb();
         fetchUserList();
+    }
+
+    public void loadFromDb() {
+        if (db.containsUserList()) {
+            UserListResponse userListResponse = db.getUsers();
+            adapter.setValues(userListResponse.getMembers());
+        }
     }
 
     private void fetchUserList() {
@@ -62,6 +71,7 @@ public class UserListActivity extends AppCompatActivity {
             public void onResponse(Call<UserListResponse> call, Response<UserListResponse> response) {
                 if (response.isSuccessful()) {
                     adapter.setValues(response.body().getMembers());
+                    db.saveUsers(response.body());
                 } else {
                     Toast.makeText(UserListActivity.this, "response is not successfull", Toast.LENGTH_LONG).show();
                 }
